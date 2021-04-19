@@ -14,4 +14,9 @@ class User < ApplicationRecord
   #def full_name
    # "#{first_name} #{last_name}"
   #end
+  
+  has_many :user_addresses
+
+  has_many :orders
+
 end
