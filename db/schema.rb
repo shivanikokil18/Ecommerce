@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_19_154050) do
+ActiveRecord::Schema.define(version: 2021_04_20_055300) do
 
   create_table "cart_items", force: :cascade do |t|
     t.float "base_price"
@@ -84,6 +84,8 @@ ActiveRecord::Schema.define(version: 2021_04_19_154050) do
     t.float "final_value"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "product_category_id"
+    t.index ["product_category_id"], name: "index_products_on_product_category_id"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -148,8 +150,10 @@ ActiveRecord::Schema.define(version: 2021_04_19_154050) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "first_name"
     t.string "last_name"
+    t.integer "role_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["role_id"], name: "index_users_on_role_id"
   end
 
   add_foreign_key "cart_items", "carts"
@@ -162,10 +166,12 @@ ActiveRecord::Schema.define(version: 2021_04_19_154050) do
   add_foreign_key "orders", "users"
   add_foreign_key "product_reviews", "products"
   add_foreign_key "product_reviews", "users"
+  add_foreign_key "products", "product_categories"
   add_foreign_key "shipments", "orders"
   add_foreign_key "shipmment_items", "order_items"
   add_foreign_key "shipmment_items", "shipments"
   add_foreign_key "transactions", "orders"
   add_foreign_key "transactions", "users"
   add_foreign_key "user_addresses", "users"
+  add_foreign_key "users", "roles"
 end
