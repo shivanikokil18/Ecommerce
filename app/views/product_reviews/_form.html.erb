@@ -11,27 +11,34 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :review %>
-    <%= form.text_field :review %>
-  </div>
+<br />
 
   <div class="field">
-    <%= form.label :rating %>
-    <%= form.number_field :rating %>
+    <% form.label :review %>
+    <%= form.text_field :review, class: "form-control", placeholder: "Add reviews" %>
   </div>
 
+<br />
+
   <div class="field">
-    <%= form.label :product_id %>
+    <% form.label :rating %>
+    <%= form.number_field :rating, class: "form-control", placeholder: "Rate the product" %>
+  </div>
+
+<br />
+
+  <div class="field">
+    <% form.label :product_id %>
     <%= form.text_field :product_id %>
   </div>
 
   <div class="field">
-    <%= form.label :user_id %>
+    <% form.label :user_id %>
     <%= form.text_field :user_id %>
   </div>
 
+
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: "btn btn-outline-secondary" %>
   </div>
 <% end %>

@@ -1,15 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Product Reviews</h1>
-
-<table>
-  <thead>
+<table class="table table-striped table-hover table-bordered ">
+  <thead class="table-primary">
     <tr>
       <th>Review</th>
       <th>Rating</th>
-      <th>Product</th>
-      <th>User</th>
-      <th colspan="3"></th>
+     <!-- <th>Product</th>
+      <th>User</th> -->
+      <th colspan="2"></th>
     </tr>
   </thead>
 
@@ -28,6 +26,6 @@
   </tbody>
 </table>
 
-<br>
+<br />
 
-<%= link_to 'New Product Review', new_product_review_path %>
+<%= link_to 'New Review', new_product_review_path, class: "btn btn-outline-secondary" %>

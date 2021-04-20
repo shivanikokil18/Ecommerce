@@ -11,37 +11,53 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
+  <br />
 
   <div class="field">
-    <%= form.label :description %>
-    <%= form.text_field :deescription %>
+    <% form.label :name %>
+    <%= form.text_field :name, class: "form-control", placeholder: "Enter product name"%>
   </div>
 
-  <div class="field">
-    <%= form.label :price %>
-    <%= form.text_field :price %>
-  </div>
+    <br />
 
   <div class="field">
-    <%= form.label :discount_price %>
-    <%= form.text_field :discount_price %>
+    <% form.label :description %>
+    <%= form.text_field :deescription, class: "form-control", placeholder: "Add description" %>
   </div>
 
-  <div class="field">
-    <%= form.label :tax %>
-    <%= form.text_field :tax %>
-  </div>
+  <br />
 
   <div class="field">
-    <%= form.label :final_value %>
-    <%= form.text_field :final_value %>
+    <% form.label :price %>
+    <%= form.text_field :price, class: "form-control", placeholder: "price" %>
   </div>
+
+  <br />
+
+  <div class="field">
+    <% form.label :discount_price %>
+    <%= form.text_field :discount_price, class: "form-control", placeholder: "discount price" %>
+  </div>
+
+  <br />
+
+  <div class="field">
+    <% form.label :tax %>
+    <%= form.text_field :tax, class: "form-control", placeholder: "tax amount" %>
+  </div>
+
+  <br />
+
+  <div class="field">
+    <% form.label :final_value %>
+    <%= form.text_field :final_value, class: "form-control", placeholder: "Final Price" %>
+  </div>
+
+  <br />
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: "btn btn-outline-secondary"%>
   </div>
+
+  <br />
 <% end %>
