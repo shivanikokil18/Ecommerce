@@ -13,20 +13,20 @@
 
   <div class="field">
     <%= form.label :shipment_date %>
-    <%= form.date_select :shipment_date %>
+    <%= form.date_select :shipment_date, class: "form-control" %>
   </div>
 
   <div class="field">
     <%= form.label :details %>
-    <%= form.text_field :details %>
+    <%= form.text_field :details, class: "form-control" %>
   </div>
 
   <div class="field">
     <%= form.label :order_id %>
-    <%= form.text_field :order_id %>
+    <%= form.text_field :order_id, class: "form-control" %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: "btn btn-outline-secondary"%>
   </div>
 <% end %>

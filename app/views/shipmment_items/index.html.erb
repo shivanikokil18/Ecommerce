@@ -2,8 +2,8 @@
 
 <h1>Shipmment Items</h1>
 
-<table>
-  <thead>
+<table class="table table-striped table-hover table-bordered">
+  <thead class= "table-primary">
     <tr>
       <th>Shipment</th>
       <th>Order item</th>
@@ -18,9 +18,9 @@
         <td><%= shipmment_item.shipment_id %></td>
         <td><%= shipmment_item.order_item_id %></td>
         <td><%= shipmment_item.status %></td>
-        <td><%= link_to 'Show', shipmment_item %></td>
-        <td><%= link_to 'Edit', edit_shipmment_item_path(shipmment_item) %></td>
-        <td><%= link_to 'Destroy', shipmment_item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', shipmment_item, class: "btn btn-outline-secondary btn-sm" %></td>
+        <td><%= link_to 'Edit', edit_shipmment_item_path(shipmment_item), class: "btn btn-outline-secondary btn-sm" %></td>
+        <td><%= link_to 'Destroy', shipmment_item, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-secondary btn-sm" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +28,4 @@
 
 <br>
 
-<%= link_to 'New Shipmment Item', new_shipmment_item_path %>
+<%= link_to 'New Shipmment Item', new_shipmment_item_path, class: "btn btn-outline-secondary" %>

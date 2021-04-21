@@ -11,37 +11,40 @@
     </div>
   <% end %>
 
+  <br />
+
   <div class="field">
     <%= form.label :tracking_number %>
-    <%= form.number_field :tracking_number %>
+    <%= form.number_field :tracking_number, class: "form-control", placeholder: "" %>
   </div>
 
   <div class="field">
-    <%= form.label :order_placed_date %>
-    <%= form.date_select :order_placed_date %>
+    <%= form.label :order_placed %>
+    <%= form.date_select :order_placed_date, class: "form-control", placeholder: "" %>
   </div>
 
   <div class="field">
     <%= form.label :status %>
-    <%= form.text_field :status %>
+    <%= form.text_field :status, class: "form-control", placeholder: "" %>
   </div>
-
+<!--
   <div class="field">
     <%= form.label :enum %>
     <%= form.text_field :enum %>
   </div>
-
+--> 
   <div class="field">
     <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
+    <%= form.text_field :user_id, class: "form-control", placeholder: ""%>
   </div>
 
   <div class="field">
     <%= form.label :user_address_id %>
-    <%= form.text_field :user_address_id %>
+    <%= form.text_field :user_address_id, class: "form-control", placeholder: "" %>
   </div>
 
+<br />
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: "btn btn-outline-secondary"%>
   </div>
 <% end %>

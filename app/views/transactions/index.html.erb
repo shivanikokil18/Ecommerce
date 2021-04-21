@@ -2,8 +2,8 @@
 
 <h1>Transactions</h1>
 
-<table>
-  <thead>
+<table class="table table-striped table-hover table-bordered">
+  <thead class= "table-primary">
     <tr>
       <th>Mode</th>
       <th>Status</th>
@@ -24,9 +24,9 @@
         <td><%= transaction.total_amount %></td>
         <td><%= transaction.user_id %></td>
         <td><%= transaction.order_id %></td>
-        <td><%= link_to 'Show', transaction %></td>
-        <td><%= link_to 'Edit', edit_transaction_path(transaction) %></td>
-        <td><%= link_to 'Destroy', transaction, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', transaction, class: "btn btn-outline-secondary btn-sm" %></td>
+        <td><%= link_to 'Edit', edit_transaction_path(transaction), class: "btn btn-outline-secondary btn-sm" %></td>
+        <td><%= link_to 'Destroy', transaction, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-secondary btn-sm" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -34,4 +34,4 @@
 
 <br>
 
-<%= link_to 'New Transaction', new_transaction_path %>
+<%= link_to 'New Transaction', new_transaction_path, class: "btn btn-outline-secondary" %>

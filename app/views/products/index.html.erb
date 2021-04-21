@@ -22,9 +22,9 @@
         <td><%= product.discount_price %></td>
         <td><%= product.tax %></td>
         <td><%= product.final_value %></td>
-        <td><%= link_to 'Show', product %></td>
-        <td><%= link_to 'Edit', edit_product_path(product) %></td>
-        <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', product, class: "btn btn-outline-secondary btn-sm" %></td>
+        <td><%= link_to 'Edit', edit_product_path(product), class: "btn btn-outline-secondary btn-sm" %></td>
+        <td><%= button_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-secondary btn-sm" %></td>
       </tr>
     <% end %>
   </tbody>

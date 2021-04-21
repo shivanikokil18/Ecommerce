@@ -12,21 +12,21 @@
   <% end %>
 
   <div class="field">
+    <%= form.label :status %>
+    <%= form.number_field :status, class: "form-control" %>
+  </div>
+
+  <div class="field">
     <%= form.label :shipment_id %>
-    <%= form.text_field :shipment_id %>
+    <%= form.text_field :shipment_id, class: "form-control" %>
   </div>
 
   <div class="field">
     <%= form.label :order_item_id %>
-    <%= form.text_field :order_item_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :status %>
-    <%= form.number_field :status %>
+    <%= form.text_field :order_item_id, class: "form-control" %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: "btn btn-outline-secondary"%>
   </div>
 <% end %>

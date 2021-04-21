@@ -13,35 +13,35 @@
 
   <div class="field">
     <%= form.label :mode %>
-    <%= form.text_field :mode %>
+    <%= form.text_field :mode, class: "form-control" %>
   </div>
 
   <div class="field">
     <%= form.label :status %>
-    <%= form.number_field :status %>
+    <%= form.number_field :status, class: "form-control" %>
   </div>
 
   <div class="field">
     <%= form.label :transaction_date %>
-    <%= form.date_select :transaction_date %>
+    <%= form.date_select :transaction_date, class: "form-control" %>
   </div>
 
   <div class="field">
     <%= form.label :total_amount %>
-    <%= form.text_field :total_amount %>
+    <%= form.text_field :total_amount, class: "form-control" %>
   </div>
 
   <div class="field">
     <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
+    <%= form.text_field :user_id, class: "form-control" %>
   </div>
 
   <div class="field">
     <%= form.label :order_id %>
-    <%= form.text_field :order_id %>
+    <%= form.text_field :order_id, class: "form-control" %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: "btn btn-outline-secondary" %>
   </div>
 <% end %>
