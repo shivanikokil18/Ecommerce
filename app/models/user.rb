@@ -22,5 +22,7 @@ class User < ApplicationRecord
   has_many :transactions
 
   has_many :product_reviews
+  has_many :carts
+  
 
 end

@@ -20,7 +20,7 @@
         <td><%= shipmment_item.status %></td>
         <td><%= link_to 'Show', shipmment_item, class: "btn btn-outline-secondary btn-sm" %></td>
         <td><%= link_to 'Edit', edit_shipmment_item_path(shipmment_item), class: "btn btn-outline-secondary btn-sm" %></td>
-        <td><%= link_to 'Destroy', shipmment_item, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-secondary btn-sm" %></td>
+        <td><%= button_to 'Destroy', shipmment_item, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-secondary btn-sm" %></td>
       </tr>
     <% end %>
   </tbody>
