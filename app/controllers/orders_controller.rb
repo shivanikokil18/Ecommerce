@@ -13,14 +13,20 @@ class OrdersController < ApplicationController
   # GET /orders/new
   def new
     @order = Order.new
+    @users = User.all
+    @user_addresses = UserAddress.all
   end
 
   # GET /orders/1/edit
   def edit
+    @users = User.all
+    @user_addresses = UserAddress.all
   end
 
   # POST /orders or /orders.json
   def create
+    @users = User.all
+    @user_addresses = UserAddress.all
     @order = Order.new(order_params)
 
     respond_to do |format|
@@ -49,6 +55,8 @@ class OrdersController < ApplicationController
 
   # DELETE /orders/1 or /orders/1.json
   def destroy
+    @users = User.all
+    @user_addresses = UserAddress.all
     @order.destroy
     respond_to do |format|
       format.html { redirect_to orders_url, notice: "Order was successfully destroyed." }

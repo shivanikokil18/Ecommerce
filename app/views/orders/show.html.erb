@@ -17,13 +17,13 @@
 
 <p>
   <strong>User:</strong>
-  <%= @order.user_id %>
+  <%= @order.user.email %>
 </p>
 
 <p>
   <strong>User address:</strong>
-  <%= @order.user_address_id %>
+  <%= @order.user_address.address%>
 </p>
 
-<%= link_to 'Edit', edit_order_path(@order) %> |
-<%= link_to 'Back', orders_path %>
+<%= link_to 'Edit', edit_order_path(@order), class: "btn btn-outline-secondary" %> 
+<%= link_to 'Back', orders_path, class: "btn btn-outline-dark" %>

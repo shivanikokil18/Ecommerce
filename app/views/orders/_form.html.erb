@@ -30,12 +30,14 @@
 
   <div class="field">
     <%= form.label :user_id %>
-    <%= form.text_field :user_id, class: "form-control", placeholder: ""%>
+    <%# form.text_field :user_id, class: "form-control", placeholder: ""%>
+    <%= select_tag "user_id", options_from_collection_for_select(@users, "id", "email"), class: "form-control" %>
   </div>
 
   <div class="field">
     <%= form.label :user_address_id %>
-    <%= form.text_field :user_address_id, class: "form-control", placeholder: "" %>
+    <%# form.text_field :user_address_id, class: "form-control", placeholder: "" %>
+    <%= select_tag "user_address_id", options_from_collection_for_select(@user_addresses, "id", "address"), class: "form-control" %>
   </div>
 
 <br />

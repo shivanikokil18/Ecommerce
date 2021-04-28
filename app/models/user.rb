@@ -17,7 +17,7 @@ class User < ApplicationRecord
   
   has_many :user_addresses
 
-  has_many :orders
+  has_many :orders, :dependent => :destroy
 
   has_many :transactions
 

@@ -30,5 +30,5 @@
   <%= @transaction.order_id %>
 </p>
 
-<%= link_to 'Edit', edit_transaction_path(@transaction) %> |
-<%= link_to 'Back', transactions_path %>
+<%= link_to 'Edit', edit_transaction_path(@transaction), class: "btn btn-outline-secondary" %> 
+<%= link_to 'Back', transactions_path, class: "btn btn-outline-dark" %>

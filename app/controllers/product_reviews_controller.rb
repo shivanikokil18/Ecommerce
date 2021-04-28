@@ -13,14 +13,20 @@ class ProductReviewsController < ApplicationController
   # GET /product_reviews/new
   def new
     @product_review = ProductReview.new
+    @products = Product.all
+    @users = User.all
   end
 
   # GET /product_reviews/1/edit
   def edit
+    @products = Product.all
+    @users = User.all
   end
 
   # POST /product_reviews or /product_reviews.json
   def create
+    @products = Product.all
+    @users = User.all
     @product_review = ProductReview.new(product_review_params)
 
     respond_to do |format|
@@ -50,6 +56,8 @@ class ProductReviewsController < ApplicationController
   # DELETE /product_reviews/1 or /product_reviews/1.json
   def destroy
     @product_review.destroy
+    @products = Product.all
+    @users = User.all
     respond_to do |format|
       format.html { redirect_to product_reviews_url, notice: "Product review was successfully destroyed." }
       format.json { head :no_content }

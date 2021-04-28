@@ -13,10 +13,12 @@ class UserAddressesController < ApplicationController
   # GET /user_addresses/new
   def new
     @user_address = UserAddress.new
+    @users = User.all
   end
 
   # GET /user_addresses/1/edit
   def edit
+    @users = User.all
   end
 
   # POST /user_addresses or /user_addresses.json

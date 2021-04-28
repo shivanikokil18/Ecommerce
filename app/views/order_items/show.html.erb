@@ -20,5 +20,5 @@
   <%= @order_item.product_id %>
 </p>
 
-<%= link_to 'Edit', edit_order_item_path(@order_item) %> |
-<%= link_to 'Back', order_items_path %>
+<%= link_to 'Edit', edit_order_item_path(@order_item), class: "btn btn-outline-secondary" %> 
+<%= link_to 'Back', order_items_path, class: "btn btn-outline-dark" %>

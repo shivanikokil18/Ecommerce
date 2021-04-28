@@ -10,5 +10,5 @@
   <%= @cart.user_address_id %>
 </p>
 
-<%= link_to 'Edit', edit_cart_path(@cart) %> |
-<%= link_to 'Back', carts_path %>
+<%= link_to 'Edit', edit_cart_path(@cart), class: "btn btn-outline-secondary" %> 
+<%= link_to 'Back', carts_path, class: "btn btn-outline-dark" %>

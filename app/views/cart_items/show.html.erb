@@ -30,5 +30,5 @@
   <%= @cart_item.cart_id %>
 </p>
 
-<%= link_to 'Edit', edit_cart_item_path(@cart_item) %> |
-<%= link_to 'Back', cart_items_path %>
+<%= link_to 'Edit', edit_cart_item_path(@cart_item), class: "btn btn-outline-secondary" %> 
+<%= link_to 'Back', cart_items_path, class: "btn btn-outline-dark" %>
