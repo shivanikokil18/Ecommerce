@@ -33,12 +33,12 @@
 
   <div class="field">
     <%= form.label :user_id %>
-    <%= form.text_field :user_id, class: "form-control" %>
+    <%= select_tag "user_id", options_from_collection_for_select(@users, "id", "email"), class: "form-control" %>
   </div>
 
   <div class="field">
     <%= form.label :order_id %>
-    <%= form.text_field :order_id, class: "form-control" %>
+    <%= select_tag "order_id", options_from_collection_for_select(@orders, "id", "order_placed_date"), class: "form-control" %>
   </div>
 
   <div class="actions">

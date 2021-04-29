@@ -13,10 +13,12 @@ class ProductsController < ApplicationController
   # GET /products/new
   def new
     @product = Product.new
+    @product_catagories = ProductCategory.all
   end
 
   # GET /products/1/edit
   def edit
+    @product_catagories = ProductCategory.all
   end
 
   # POST /products or /products.json
@@ -64,6 +66,6 @@ class ProductsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def product_params
-      params.require(:product).permit(:name, :deescription, :price, :discount_price, :tax, :final_value)
+      params.require(:product).permit(:name, :deescription, :price, :discount_price, :tax, :final_value, :status).merge({product_category_id: params[:product_category_id]})
     end
 end

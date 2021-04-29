@@ -18,12 +18,12 @@
 
   <div class="field">
     <%= form.label :shipment_id %>
-    <%= form.text_field :shipment_id, class: "form-control" %>
+    <%= select_tag "shipment_id", options_from_collection_for_select(@shipments, "id", "id"), class: "form-control" %>
   </div>
 
   <div class="field">
     <%= form.label :order_item_id %>
-    <%= form.text_field :order_item_id, class: "form-control" %>
+    <%= select_tag "order_item_id", options_from_collection_for_select(@order_items, "id", "id"), class: "form-control" %>
   </div>
 
   <div class="actions">

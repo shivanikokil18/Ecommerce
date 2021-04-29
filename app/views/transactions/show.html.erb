@@ -21,13 +21,13 @@
 </p>
 
 <p>
-  <strong>User:</strong>
-  <%= @transaction.user_id %>
+  <strong>User Email:</strong>
+  <%= @transaction.user.email %>
 </p>
 
 <p>
   <strong>Order:</strong>
-  <%= @transaction.order_id %>
+  <%= @transaction.order.order_placed_date %>
 </p>
 
 <%= link_to 'Edit', edit_transaction_path(@transaction), class: "btn btn-outline-secondary" %> 

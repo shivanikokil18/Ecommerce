@@ -30,5 +30,16 @@
   <%= @product.final_value %>
 </p>
 
+<p>
+  <strong>Status:</strong>
+  <%= @product.status %>
+</p>
+
+<p>
+  <strong>Product Category:</strong>
+  <%= @product.product_category.name %>
+</p>
+
+
 <%= link_to 'Edit', edit_product_path(@product), class: "btn btn-outline-secondary" %> 
 <%= link_to 'Back', products_path, class: "btn btn-outline-dark" %>

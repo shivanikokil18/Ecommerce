@@ -23,7 +23,7 @@
 
   <div class="field">
     <%= form.label :order_id %>
-    <%= form.text_field :order_id, class: "form-control" %>
+    <%= select_tag "order_id", options_from_collection_for_select(@orders, "id", "tracking_number"), class: "form-control" %>
   </div>
 
   <div class="actions">

@@ -25,8 +25,7 @@ class OrdersController < ApplicationController
 
   # POST /orders or /orders.json
   def create
-    @users = User.all
-    @user_addresses = UserAddress.all
+    
     @order = Order.new(order_params)
 
     respond_to do |format|
@@ -55,7 +54,6 @@ class OrdersController < ApplicationController
 
   # DELETE /orders/1 or /orders/1.json
   def destroy 
-    byebug
     @order.destroy
     respond_to do |format|
       format.html { redirect_to orders_url, notice: "Order was successfully destroyed." }
@@ -71,6 +69,6 @@ class OrdersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def order_params
-      params.require(:order).permit(:tracking_number, :order_placed_date, :status, :user_id, :user_address_id)
+      params.require(:order).permit(:tracking_number, :order_placed_date, :status).merge({user_id: params[:user_id], user_address_id: params[:user_address_id]})
     end
 end

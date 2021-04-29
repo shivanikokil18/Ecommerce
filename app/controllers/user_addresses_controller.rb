@@ -66,6 +66,6 @@ class UserAddressesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_address_params
-      params.require(:user_address).permit(:address, :city, :pincode, :state, :country, :phn_no, :residencial_phn_no, :user_id)
+      params.require(:user_address).permit(:address, :city, :pincode, :state, :country, :phn_no, :residencial_phn_no).merge({user_id: params[:user_id]})
     end
 end

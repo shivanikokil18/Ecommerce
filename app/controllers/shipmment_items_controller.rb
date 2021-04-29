@@ -13,10 +13,14 @@ class ShipmmentItemsController < ApplicationController
   # GET /shipmment_items/new
   def new
     @shipmment_item = ShipmmentItem.new
+    @shipments = Shipment.all
+    @order_items = OrderItem.all
   end
 
   # GET /shipmment_items/1/edit
   def edit
+    @shipments = Shipment.all
+    @order_items = OrderItem.all
   end
 
   # POST /shipmment_items or /shipmment_items.json
@@ -64,6 +68,6 @@ class ShipmmentItemsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def shipmment_item_params
-      params.require(:shipmment_item).permit(:shipment_id, :order_item_id, :status)
+      params.require(:shipmment_item).permit(:status).merge({shipment_id: params[:shipment_id], order_item_id: params[:order_item_id]})
     end
 end

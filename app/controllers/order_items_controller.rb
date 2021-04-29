@@ -68,6 +68,6 @@ class OrderItemsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def order_item_params
-      params.require(:order_item).permit(:item_quantity, :item_price, :order_id, :product_id)
+      params.require(:order_item).permit(:item_quantity, :item_price).merge({order_id: params[:order_id], product_id: params[:product_id]})
     end
 end

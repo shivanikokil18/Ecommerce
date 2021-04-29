@@ -12,7 +12,7 @@
 
 <p>
   <strong>Order:</strong>
-  <%= @shipment.order_id %>
+  <%= @shipment.order.tracking_number%>
 </p>
 
 <%= link_to 'Edit', edit_shipment_path(@shipment), class: "btn btn-outline-secondary" %> |

@@ -47,6 +47,16 @@
     <%= form.text_field :final_value, class: "form-control", placeholder: "Final Price" %>
   </div>
 
+  <div class="field">
+    <%= form.label :status %>
+    <%= select_tag :status, options_for_select(Product.statuses), class: "form-control" %>
+  </div> 
+
+  <div class="field">
+    <%= form.label :product_category %>
+    <%= select_tag "product_category_id", options_from_collection_for_select(@product_categories, "id", "name"), class: "form-control" %>
+  </div>
+
   <br />
 
   <div class="actions">

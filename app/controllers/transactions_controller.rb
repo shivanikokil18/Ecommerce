@@ -13,10 +13,14 @@ class TransactionsController < ApplicationController
   # GET /transactions/new
   def new
     @transaction = Transaction.new
+    @users = User.all
+    @orders = Order.all
   end
 
   # GET /transactions/1/edit
   def edit
+    @users = User.all
+    @orders = Order.all
   end
 
   # POST /transactions or /transactions.json
@@ -64,6 +68,6 @@ class TransactionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def transaction_params
-      params.require(:transaction).permit(:mode, :status, :transaction_date, :total_amount, :user_id, :order_id)
+      params.require(:transaction).permit(:mode, :status, :transaction_date, :total_amount).merge({user_id: params[:user_id], order_id: params[:order_id]})
     end
 end

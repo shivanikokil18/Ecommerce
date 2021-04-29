@@ -56,8 +56,6 @@ class ProductReviewsController < ApplicationController
   # DELETE /product_reviews/1 or /product_reviews/1.json
   def destroy
     @product_review.destroy
-    @products = Product.all
-    @users = User.all
     respond_to do |format|
       format.html { redirect_to product_reviews_url, notice: "Product review was successfully destroyed." }
       format.json { head :no_content }
@@ -72,6 +70,6 @@ class ProductReviewsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def product_review_params
-      params.require(:product_review).permit(:review, :rating, :product_id, :user_id)
+      params.require(:product_review).permit(:review, :rating).merge({product_id: params[:product_id], user_id: params[:user_id]}) 
     end
 end
