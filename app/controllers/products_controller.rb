@@ -13,16 +13,17 @@ class ProductsController < ApplicationController
   # GET /products/new
   def new
     @product = Product.new
-    @product_catagories = ProductCategory.all
+    @product_categories = ProductCategory.all
   end
 
   # GET /products/1/edit
   def edit
-    @product_catagories = ProductCategory.all
+    @product_categories = ProductCategory.all
   end
 
   # POST /products or /products.json
   def create
+    #byebug
     @product = Product.new(product_params)
 
     respond_to do |format|
