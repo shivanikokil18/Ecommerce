@@ -23,6 +23,8 @@ class User < ApplicationRecord
 
   has_many :product_reviews
   has_many :carts
+
+  belongs_to :role
   
 
 end
