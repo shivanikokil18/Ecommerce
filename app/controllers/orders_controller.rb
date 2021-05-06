@@ -1,9 +1,13 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: %i[ show edit update destroy ]
+  load_and_authorize_resource
+  #before_action :zero_users_or_authenticated, only: [:read]
 
+  before_action :set_order, only: %i[ show edit update destroy ]
+  
   # GET /orders or /orders.json
   def index
-    @orders = Order.all
+    #@orders = Order.all
+    @orders = Order.accessible_by(current_ability)
   end
 
   # GET /orders/1 or /orders/1.json
@@ -26,6 +30,7 @@ class OrdersController < ApplicationController
   # POST /orders or /orders.json
   def create
     @order = Order.new(order_params)
+    @order.user_id = current_user.id
 
     respond_to do |format|
       if @order.save
@@ -68,6 +73,6 @@ class OrdersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def order_params
-      params.require(:order).permit(:tracking_number, :order_placed_date, :status).merge({user_id: params[:user_id], user_address_id: params[:user_address_id]})
+      params.require(:order).permit(:tracking_number, :order_placed_date).merge({status: params[:status].to_i, user_id: params[:user_id], user_address_id: params[:user_address_id]})
     end
 end

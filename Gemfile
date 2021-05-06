@@ -29,7 +29,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.4', require: false
 
 gem 'devise', '~> 4.7', '>= 4.7.3'
-gem 'cancan', '~> 1.6', '>= 1.6.10'
+gem 'cancancan', '~> 3.2', '>= 3.2.1'
 
 gem 'bootstrap', '~> 5.0.0.beta2'
 gem 'sprockets-rails', '~> 3.2', '>= 3.2.2'

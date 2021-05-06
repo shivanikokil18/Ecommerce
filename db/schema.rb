@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_22_114037) do
+ActiveRecord::Schema.define(version: 2021_05_05_065525) do
 
   create_table "cart_items", force: :cascade do |t|
     t.float "base_price"
@@ -151,6 +151,7 @@ ActiveRecord::Schema.define(version: 2021_04_22_114037) do
     t.string "first_name"
     t.string "last_name"
     t.integer "role_id"
+    t.boolean "admin"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["role_id"], name: "index_users_on_role_id"

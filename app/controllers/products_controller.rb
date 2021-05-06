@@ -1,9 +1,12 @@
 class ProductsController < ApplicationController
+  load_and_authorize_resource
+
   before_action :set_product, only: %i[ show edit update destroy ]
 
   # GET /products or /products.json
   def index
-    @products = Product.all
+    #@products = Product.all
+    @products = Product.accessible_by(current_ability)
   end
 
   # GET /products/1 or /products/1.json
@@ -23,9 +26,8 @@ class ProductsController < ApplicationController
 
   # POST /products or /products.json
   def create
-    #byebug
     @product = Product.new(product_params)
-
+      
     respond_to do |format|
       if @product.save
         format.html { redirect_to @product, notice: "Product was successfully created." }
@@ -67,6 +69,6 @@ class ProductsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def product_params
-      params.require(:product).permit(:name, :deescription, :price, :discount_price, :tax, :final_value, :status).merge({product_category_id: params[:product_category_id]})
+      params.require(:product).permit(:name, :deescription, :price, :discount_price, :tax, :final_value).merge({product_category_id: params[:product_category_id], status: params[:status].to_i})
     end
 end

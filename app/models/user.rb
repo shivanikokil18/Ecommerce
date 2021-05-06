@@ -25,6 +25,5 @@ class User < ApplicationRecord
   has_many :carts
 
   belongs_to :role
-  
 
 end

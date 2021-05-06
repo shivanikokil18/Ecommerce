@@ -1,6 +1,6 @@
 <h1>Editing Order</h1>
-
+<% if can? :edit, @order%>
 <%= render 'form', order: @order %>
-
+<% end %>
 <%= link_to 'Show', @order, class: "btn btn-outline-secondary" %> 
 <%= link_to 'Back', orders_path, class: "btn btn-outline-dark" %>

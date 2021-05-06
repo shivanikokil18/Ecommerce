@@ -1,9 +1,12 @@
 class ProductReviewsController < ApplicationController
+  load_and_authorize_resource
+
   before_action :set_product_review, only: %i[ show edit update destroy ]
 
   # GET /product_reviews or /product_reviews.json
   def index
-    @product_reviews = ProductReview.all
+    #@product_reviews = ProductReview.all
+    @product_reviews = ProductReview.accessible_by(current_ability)
   end
 
   # GET /product_reviews/1 or /product_reviews/1.json
@@ -28,6 +31,8 @@ class ProductReviewsController < ApplicationController
     @products = Product.all
     @users = User.all
     @product_review = ProductReview.new(product_review_params)
+
+    @product_review.user_id = current_user.id 
 
     respond_to do |format|
       if @product_review.save
