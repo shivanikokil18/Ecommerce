@@ -19,8 +19,12 @@
         <td><%= shipment.details %></td>
         <td><%= shipment.order_id %></td>
         <td><%= link_to 'Show', shipment, class: "btn btn-outline-secondary btn-sm" %></td>
+        <% if can? :update, @shipment%>
         <td><%= link_to 'Edit', edit_shipment_path(shipment), class: "btn btn-outline-secondary btn-sm" %></td>
+        <% end %>
+        <% if can? :destroy, @shipment%>
         <td><%= button_to 'Destroy', shipment, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-secondary btn-sm" %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +32,6 @@
 
 <br>
 
+<% if can? :create, @shipment%>
 <%= link_to 'New Shipment', new_shipment_path, class: "btn btn-outline-secondary" %>
+<% end %>

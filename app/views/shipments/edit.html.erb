@@ -1,6 +1,6 @@
 <h1>Editing Shipment</h1>
-
+<% if can? :update, @shipment%>
 <%= render 'form', shipment: @shipment %>
-
+<% end %>
 <%= link_to 'Show', @shipment, class: "btn btn-outline-secondary" %> 
 <%= link_to 'Back', shipments_path, class: "btn btn-outline-dark" %>

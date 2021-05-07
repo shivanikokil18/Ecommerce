@@ -2,8 +2,8 @@
 
 <h1>Cart Items</h1>
 
-<table>
-  <thead>
+<table class="table table-striped table-hover table-bordered ">
+  <thead class="table-primary">
     <tr>
       <th>Base price</th>
       <th>Discount</th>
@@ -24,9 +24,9 @@
         <td><%= cart_item.total_price %></td>
         <td><%= cart_item.product_id %></td>
         <td><%= cart_item.cart_id %></td>
-        <td><%= link_to 'Show', cart_item %></td>
-        <td><%= link_to 'Edit', edit_cart_item_path(cart_item) %></td>
-        <td><%= link_to 'Destroy', cart_item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', cart_item, class: "btn btn-outline-secondary btn-sm" %></td>
+        <td><%= link_to 'Edit', edit_cart_item_path(cart_item), class: "btn btn-outline-secondary btn-sm" %></td>
+        <td><%= link_to 'Destroy', cart_item, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-secondary btn-sm" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -34,4 +34,4 @@
 
 <br>
 
-<%= link_to 'New Cart Item', new_cart_item_path %>
+<%= link_to 'New Cart Item', new_cart_item_path, class: "btn btn-outline-secondary" %>

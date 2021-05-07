@@ -15,5 +15,7 @@
   <%= @shipment.order.tracking_number%>
 </p>
 
+<% if can? :update, @shipment%>
 <%= link_to 'Edit', edit_shipment_path(@shipment), class: "btn btn-outline-secondary" %> |
+<% end %>
 <%= link_to 'Back', shipments_path, class: "btn btn-outline-dark" %>

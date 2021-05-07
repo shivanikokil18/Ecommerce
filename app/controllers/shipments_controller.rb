@@ -1,9 +1,11 @@
 class ShipmentsController < ApplicationController
+  load_and_authorize_resource
   before_action :set_shipment, only: %i[ show edit update destroy ]
 
   # GET /shipments or /shipments.json
   def index
-    @shipments = Shipment.all
+    #@shipments = Shipment.all
+    @shipments = Shipment.accessible_by(current_ability)
   end
 
   # GET /shipments/1 or /shipments/1.json

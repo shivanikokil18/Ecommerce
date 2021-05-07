@@ -13,9 +13,30 @@ class Ability
 
       can :read, Order, user_id: user.id
       cannot :distroy, Order
-      cannot :edit, Order
+      cannot :update, Order
 
       can :manage, ProductReview, user_id: user.id
+      can :read, ProductReview
+
+      can :read, ProductCategory
+
+      can :manage, UserAddress, user_id: user.id
+
+      can :read, OrderItem
+
+      can :manage, Cart, user_id: user.id
+
+      can :manage, CartItem, user_id: user.id
+
+      can :read, OrderItem
+
+      can :read, Role
+
+      can :read, Shipment
+
+      can :read, ShipmmentItem
+
+
     end
     # Define abilities for the passed in user here. For example:
     #

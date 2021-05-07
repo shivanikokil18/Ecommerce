@@ -23,7 +23,7 @@
         <td><%= order.user_id %></td>
         <td><%= order.user_address_id %></td>
         <td><%= link_to 'Show', order, class: "btn btn-outline-secondary btn-sm" %></td>
-        <% if can? :edit, @order%>
+        <% if can? :update, @order%>
           <td><%= link_to 'Edit', edit_order_path(order), class: "btn btn-outline-secondary btn-sm" %></td>
         <% end %>
         <% if can? :destroy, @order%>

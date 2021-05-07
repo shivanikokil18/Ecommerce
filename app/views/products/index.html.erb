@@ -27,7 +27,7 @@
         <td><%= product.status %></td>
         <td><%= product.product_category_id %></td>
         <td><%= link_to 'Show', product, class: "btn btn-outline-secondary btn-sm" %></td>
-        <% if can? :edit, @product%>
+        <% if can? :update, @product%>
           <td><%= link_to 'Edit', edit_product_path(product), class: "btn btn-outline-secondary btn-sm" %></td>
         <% end %>
         <% if can? :destroy, @product%>
@@ -40,4 +40,6 @@
 
 <br>
 
+<% if can? :create, @product%>
 <%= link_to 'New Product', new_product_path, class: "btn btn-outline-secondary" %>
+<% end %>

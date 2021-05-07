@@ -1,6 +1,6 @@
 <h1>Editing Product Category</h1>
-
+<% if can? :update, @product_category%>
 <%= render 'form', product_category: @product_category %>
-
+<% end %>
 <%= link_to 'Show', @product_category, class: "btn btn-outline-secondary" %> 
 <%= link_to 'Back', product_categories_path, class: "btn btn-outline-dark" %>

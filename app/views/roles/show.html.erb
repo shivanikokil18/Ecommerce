@@ -4,6 +4,7 @@
   <strong>Title:</strong>
   <%= @role.title %>
 </p>
-
-<%= link_to 'Edit', edit_role_path(@role), class: "btn btn-outline-secondary" %> 
+<% if can? :update, @roles%>
+<%= link_to 'Edit', edit_role_path(@role), class: "btn btn-outline-secondary" %>
+<% end %> 
 <%= link_to 'Back', roles_path, class: "btn btn-outline-dark" %>

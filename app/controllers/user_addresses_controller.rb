@@ -1,9 +1,11 @@
 class UserAddressesController < ApplicationController
+  load_and_authorize_resource
   before_action :set_user_address, only: %i[ show edit update destroy ]
 
   # GET /user_addresses or /user_addresses.json
   def index
-    @user_addresses = UserAddress.all
+    #@user_addresses = UserAddress.all
+    @user_addresses = UserAddress.accessible_by(current_ability)
   end
 
   # GET /user_addresses/1 or /user_addresses/1.json

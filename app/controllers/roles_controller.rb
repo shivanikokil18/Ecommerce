@@ -1,9 +1,11 @@
 class RolesController < ApplicationController
+  load_and_authorize_resource
   before_action :set_role, only: %i[ show edit update destroy ]
 
   # GET /roles or /roles.json
   def index
-    @roles = Role.all
+    #@roles = Role.all
+    @roles = Role.accessible_by(current_ability)
   end
 
   # GET /roles/1 or /roles/1.json

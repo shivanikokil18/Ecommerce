@@ -1,9 +1,11 @@
 class CartItemsController < ApplicationController
+  load_and_authorize_resource
   before_action :set_cart_item, only: %i[ show edit update destroy ]
 
   # GET /cart_items or /cart_items.json
   def index
-    @cart_items = CartItem.all
+    #@cart_items = CartItem.all
+    @cart_items = CartItem.accessible_by(current_ability)
   end
 
   # GET /cart_items/1 or /cart_items/1.json

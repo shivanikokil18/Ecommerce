@@ -10,38 +10,39 @@
       </ul>
     </div>
   <% end %>
+  <br />
 
   <div class="field">
     <%= form.label :base_price %>
-    <%= form.text_field :base_price %>
+    <%= form.text_field :base_price, class: "form-control" %>
   </div>
 
   <div class="field">
     <%= form.label :discount %>
-    <%= form.text_field :discount %>
+    <%= form.text_field :discount, class: "form-control" %>
   </div>
 
   <div class="field">
     <%= form.label :tax %>
-    <%= form.text_field :tax %>
+    <%= form.text_field :tax, class: "form-control" %>
   </div>
 
   <div class="field">
     <%= form.label :total_price %>
-    <%= form.text_field :total_price %>
+    <%= form.text_field :total_price, class: "form-control" %>
   </div>
 
   <div class="field">
     <%= form.label :product_id %>
-    <%= form.text_field :product_id %>
+    <%= form.text_field :product_id, class: "form-control" %>
   </div>
 
   <div class="field">
     <%= form.label :cart_id %>
-    <%= form.text_field :cart_id %>
+    <%= form.text_field :cart_id, class: "form-control" %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: "btn btn-outline-secondary" %>
   </div>
 <% end %>

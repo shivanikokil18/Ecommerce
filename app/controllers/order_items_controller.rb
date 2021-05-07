@@ -1,9 +1,11 @@
 class OrderItemsController < ApplicationController
+  load_and_authorize_resource
   before_action :set_order_item, only: %i[ show edit update destroy ]
 
   # GET /order_items or /order_items.json
   def index
-    @order_items = OrderItem.all
+    #@order_items = OrderItem.all
+    @order_items = OrderItem.accessible_by(current_ability)
   end
 
   # GET /order_items/1 or /order_items/1.json

@@ -1,9 +1,12 @@
 class CartsController < ApplicationController
+  load_and_authorize_resource
+
   before_action :set_cart, only: %i[ show edit update destroy ]
 
   # GET /carts or /carts.json
   def index
-    @carts = Cart.all
+    #@carts = Cart.all
+    @carts =Cart.accessible_by(current_ability)
   end
 
   # GET /carts/1 or /carts/1.json
@@ -13,10 +16,14 @@ class CartsController < ApplicationController
   # GET /carts/new
   def new
     @cart = Cart.new
+    @users = User.all
+    @user_addresses = UserAddress.all
   end
 
   # GET /carts/1/edit
   def edit
+    @users = User.all
+    @user_addresses = UserAddress.all
   end
 
   # POST /carts or /carts.json
@@ -64,6 +71,6 @@ class CartsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def cart_params
-      params.require(:cart).permit(:user_id, :user_address_id)
+      params.require(:cart).permit().merge({user_id: params[:user_id], user_address_id: params[:user_address_id]})
     end
 end

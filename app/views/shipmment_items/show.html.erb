@@ -15,5 +15,7 @@
   <%= @shipmment_item.status %>
 </p>
 
+<% if can? :update, @shipmment_item%>
 <%= link_to 'Edit', edit_shipmment_item_path(@shipmment_item), class: "btn btn-outline-secondary" %> 
+<% end %>
 <%= link_to 'Back', shipmment_items_path, class: "btn btn-outline-dark" %>
