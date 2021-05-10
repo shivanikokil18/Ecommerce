@@ -71,6 +71,6 @@ class CartsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def cart_params
-      params.require(:cart).permit().merge({user_id: params[:user_id], user_address_id: params[:user_address_id]})
+      params.permit(:user_id, :user_address_id)
     end
 end
