@@ -11,37 +11,57 @@
     </div>
   <% end %>
 
+
   <div class="field">
     <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, class: "form-control", placeholder: "Enter product name"%>
   </div>
+
 
   <div class="field">
     <%= form.label :description %>
-    <%= form.text_field :deescription %>
+    <%= form.text_field :deescription, class: "form-control", placeholder: "Add description" %>
   </div>
+
 
   <div class="field">
     <%= form.label :price %>
-    <%= form.text_field :price %>
+    <%= form.text_field :price, class: "form-control", placeholder: "price" %>
   </div>
+
 
   <div class="field">
     <%= form.label :discount_price %>
-    <%= form.text_field :discount_price %>
+    <%= form.text_field :discount_price, class: "form-control", placeholder: "discount price" %>
   </div>
+
 
   <div class="field">
     <%= form.label :tax %>
-    <%= form.text_field :tax %>
+    <%= form.text_field :tax, class: "form-control", placeholder: "tax amount" %>
   </div>
+
 
   <div class="field">
     <%= form.label :final_value %>
-    <%= form.text_field :final_value %>
+    <%= form.text_field :final_value, class: "form-control", placeholder: "Final Price" %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="field">
+    <%= form.label :status %>
+    <%= select_tag :status, options_for_select(Product.statuses), class: "form-control" %>
+  </div> 
+
+  <div class="field">
+    <%= form.label :product_category %>
+    <%= select_tag "product_category_id", options_from_collection_for_select(@product_categories, "id", "name"), class: "form-control" %>
   </div>
+
+<br />
+
+  <div class="actions">
+    <%= form.submit class: "btn btn-outline-secondary"%>
+  </div>
+
+  <br />
 <% end %>

@@ -1,0 +1,47 @@
+<%= form_with(model: transaction) do |form| %>
+  <% if transaction.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(transaction.errors.count, "error") %> prohibited this transaction from being saved:</h2>
+
+      <ul>
+        <% transaction.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :mode %>
+    <%= form.text_field :mode, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :status %>
+    <%= form.number_field :status, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :transaction_date %>
+    <%= form.date_select :transaction_date, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :total_amount %>
+    <%= form.text_field :total_amount, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= select_tag "user_id", options_from_collection_for_select(@users, "id", "email"), class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :order_id %>
+    <%= select_tag "order_id", options_from_collection_for_select(@orders, "id", "order_placed_date"), class: "form-control" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class: "btn btn-outline-secondary" %>
+  </div>
+<% end %>

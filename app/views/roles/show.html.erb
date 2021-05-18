@@ -1,0 +1,10 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @role.title %>
+</p>
+<% if can? :update, @roles%>
+<%= link_to 'Edit', edit_role_path(@role), class: "btn btn-outline-secondary" %>
+<% end %> 
+<%= link_to 'Back', roles_path, class: "btn btn-outline-dark" %>

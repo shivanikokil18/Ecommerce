@@ -1,0 +1,29 @@
+<%= form_with(model: cart) do |form| %>
+  <% if cart.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(cart.errors.count, "error") %> prohibited this cart from being saved:</h2>
+
+      <ul>
+        <% cart.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <br />
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= select_tag "user_id", options_from_collection_for_select(@users, "id", "email"), class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :user_address_id %>
+    <%= select_tag "user_address_id", options_from_collection_for_select(@user_addresses, "id", "address"), class: "form-control" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class: "btn btn-outline-secondary" %>
+  </div>
+<% end %>

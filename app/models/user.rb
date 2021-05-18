@@ -14,4 +14,16 @@ class User < ApplicationRecord
   #def full_name
    # "#{first_name} #{last_name}"
   #end
+  
+  has_many :user_addresses
+
+  has_many :orders, :dependent => :destroy
+
+  has_many :transactions
+
+  has_many :product_reviews
+  has_many :carts
+
+  belongs_to :role
+
 end
