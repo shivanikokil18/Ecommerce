@@ -13,6 +13,10 @@ class ProductsController < ApplicationController
   def show
   end
 
+  #def test
+   # render json: { message: 'ok'}
+  #end
+
   # GET /products/new
   def new
     @product = Product.new

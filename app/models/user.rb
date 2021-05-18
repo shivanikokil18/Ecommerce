@@ -8,6 +8,16 @@ class User < ApplicationRecord
 
   validates :email, presence: true, :uniqueness => { case_sensitive: false }, format: { with: VALID_EMAIL_REGEX }
   
+  before_validation :ensure_login_has_a_value
+ 
+  protected
+    def ensure_login_has_a_value
+      if email.nil?
+        self.email = email unless email.blank?
+      end
+    end
+
+    
 
   #validates :first_name, :last_name, presence: true
 
@@ -25,5 +35,6 @@ class User < ApplicationRecord
   has_many :carts
 
   belongs_to :role
+
 
 end
