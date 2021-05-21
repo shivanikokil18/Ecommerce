@@ -2,16 +2,21 @@
 <p>India's top shopping site </p>
 
 <div class="container">
-  <% @products.each do |product|%>
+  <% @products.each_slice(3) do |product_array|%>
     <div class="row">
-      <div class="col-md-4">
-        <h4><%= product.name %></h4>
-        <p> <%= product.deescription%></p>
-        <h6><%= product.price %></h6>
-        <p><%= product.tax %></p>
-        <p><%= product.final_value %></p>
-        <p> <%= product.status%></p>
-      </div>
+      <% product_array.each do |product|%>
+        <div class="col-md-4">
+          <h4><%= product.name %></h4>
+          <p> <%= product.deescription%></p>
+          <h6><%= product.price %></h6>
+          <p><%= product.tax %></p>
+          <p><%= product.final_value %></p>
+          <p> <%= product.status%></p>
+        </div>
+      <% end %>
     </div>
   <% end %>
 </div>
+
+
+
