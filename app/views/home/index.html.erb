@@ -1,11 +1,15 @@
-<h1>Welcome to Ecommerce</h1>
-<p>India's top shopping site </p>
+<head>
+ <link rel="tylesheet" href="app/assets/stylesheets/home.scss"> 
+</head>
+<body class="body">
+<h1 class="h1">Welcome to Ecommerce</h1>
+<p class="p1">India's top shopping site </p>
 
 <div class="container">
   <% @products.each_slice(3) do |product_array|%>
     <div class="row">
       <% product_array.each do |product|%>
-        <div class="col-md-4">
+        <div class="col-md-4 card gy-4">
           <h4><%= product.name %></h4>
           <p> <%= product.deescription%></p>
           <h6><%= product.price %></h6>
@@ -19,4 +23,4 @@
 </div>
 
 
-
+</body>
