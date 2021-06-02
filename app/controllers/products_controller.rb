@@ -1,4 +1,4 @@
-class ProductsController < ApplicationController
+class V1::ProductsController < ApplicationController
   load_and_authorize_resource
 
   before_action :set_product, only: %i[ show edit update destroy ]
@@ -7,6 +7,7 @@ class ProductsController < ApplicationController
   def index
     #@products = Product.all
     @products = Product.accessible_by(current_ability)
+    #render json: @products, status: :ok
   end
 
   # GET /products/1 or /products/1.json
@@ -36,6 +37,8 @@ class ProductsController < ApplicationController
       if @product.save
         format.html { redirect_to @product, notice: "Product was successfully created." }
         format.json { render :show, status: :created, location: @product }
+        #render json: @products, status: :product_created
+
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @product.errors, status: :unprocessable_entity }
