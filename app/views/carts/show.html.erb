@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @cart.user.email %>
+</p>
+
+<p>
+  <strong>User address:</strong>
+  <%= @cart.user_address.address %>
+</p>
+
+<%= link_to 'Edit', edit_cart_path(@cart), class: "btn btn-outline-secondary" %> 
+<%= link_to 'Back', carts_path, class: "btn btn-outline-dark" %>

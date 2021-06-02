@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Tracking number:</strong>
+  <%= @order.tracking_number %>
+</p>
+
+<p>
+  <strong>Order placed date:</strong>
+  <%= @order.order_placed_date %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @order.status %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @order.user.email %>
+</p>
+
+<p>
+  <strong>User address:</strong>
+  <%= @order.user_address.address%>
+</p>
+
+<% if can? :update, @order%>
+<%= link_to 'Edit', edit_order_path(@order), class: "btn btn-outline-secondary" %> 
+<% end %>
+<%= link_to 'Back', orders_path, class: "btn btn-outline-dark" %>

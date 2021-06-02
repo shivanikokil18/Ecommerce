@@ -1,0 +1,49 @@
+<%= form_with(model: product_review) do |form| %>
+  <% if product_review.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(product_review.errors.count, "error") %> prohibited this product_review from being saved:</h2>
+
+      <ul>
+        <% product_review.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<br />
+
+  <div class="field">
+    <%= form.label :review %>
+    <%= form.text_field :review, class: "form-control", placeholder: "Add reviews" %>
+  </div>
+
+<br />
+
+  <div class="field">
+    <%= form.label :rating %>
+    <%= form.number_field :rating, class: "form-control", placeholder: "Rate the product" %>
+  </div>
+
+<br />
+
+  <div class="field">
+    <%= form.label :product_id %>
+    <%# form.text_field :product_id, class: "form-control" %>
+    <%= select_tag "product_id", options_from_collection_for_select(@products, "id", "name"), class: "form-control" %>
+  </div>
+
+<br />
+
+  <!-- <div class="field">
+      <%= form.label :user_id %>
+      <%= select_tag "user_id", options_from_collection_for_select(@users, "id", "email"), class: "form-control" %>
+  </div>
+  -->
+
+<br />
+
+  <div class="actions">
+    <%= form.submit class: "btn btn-outline-secondary" %>
+  </div>
+<% end %>

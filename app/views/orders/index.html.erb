@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Orders</h1>
+
+<table class="table table-striped table-hover table-bordered">
+  <thead class= "table-primary">
+    <tr>
+      <th>Tracking number</th>
+      <th>Order placed date</th>
+      <th>Status</th>
+      <th>User</th>
+      <th>User address</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @orders.each do |order| %>
+      <tr>
+        <td><%= order.tracking_number %></td>
+        <td><%= order.order_placed_date %></td>
+        <td><%= order.status %></td>
+        <td><%= order.user_id %></td>
+        <td><%= order.user_address_id %></td>
+        <td><%= link_to 'Show', order, class: "btn btn-outline-secondary btn-sm" %></td>
+        <% if can? :update, @order%>
+          <td><%= link_to 'Edit', edit_order_path(order), class: "btn btn-outline-secondary btn-sm" %></td>
+        <% end %>
+        <% if can? :destroy, @order%>
+          <td><%= button_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-secondary btn-sm" %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Order', new_order_path, class: "btn btn-outline-secondary" %>

@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Roles</h1>
+
+<table class="table table-striped table-hover table-bordered"> 
+  <thead class= "table-primary">
+    <tr>
+      <th>Title</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @roles.each do |role| %>
+      <tr>
+        <td><%= role.title %></td>
+        <td><%= link_to 'Show', role, class: "btn btn-outline-secondary btn-sm" %></td>
+        <% if can? :update, @role%>
+        <td><%= link_to 'Edit', edit_role_path(role), class: "btn btn-outline-secondary btn-sm" %></td>
+        <% end %>
+        <% if can? :destroy, @roles%>
+        <td><%= button_to 'Destroy', role, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-secondary btn-sm" %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<% if can? :create, @roles %>
+<%= link_to 'New Role', new_role_path, class: "btn btn-outline-secondary" %>
+<% end %>

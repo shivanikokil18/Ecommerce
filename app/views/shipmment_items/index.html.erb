@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Shipmment Items</h1>
+
+<table class="table table-striped table-hover table-bordered">
+  <thead class= "table-primary">
+    <tr>
+      <th>Shipment</th>
+      <th>Order item</th>
+      <th>Status</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @shipmment_items.each do |shipmment_item| %>
+      <tr>
+        <td><%= shipmment_item.shipment_id %></td>
+        <td><%= shipmment_item.order_item_id %></td>
+        <td><%= shipmment_item.status %></td>
+        <td><%= link_to 'Show', shipmment_item, class: "btn btn-outline-secondary btn-sm" %></td>
+        <% if can? :update, @shipmment_item%>
+        <td><%= link_to 'Edit', edit_shipmment_item_path(shipmment_item), class: "btn btn-outline-secondary btn-sm" %></td>
+        <% end %>
+        <% if can? :destroy, @shipmment_item%>
+        <td><%= button_to 'Destroy', shipmment_item, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-secondary btn-sm" %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<% if can? :create, @shipmment_item%>
+<%= link_to 'New Shipmment Item', new_shipmment_item_path, class: "btn btn-outline-secondary" %>
+<% end %>

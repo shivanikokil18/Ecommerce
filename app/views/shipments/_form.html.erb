@@ -1,0 +1,32 @@
+<%= form_with(model: shipment) do |form| %>
+  <% if shipment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(shipment.errors.count, "error") %> prohibited this shipment from being saved:</h2>
+
+      <ul>
+        <% shipment.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :shipment_date %>
+    <%= form.date_select :shipment_date, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :details %>
+    <%= form.text_field :details, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :order_id %>
+    <%= select_tag "order_id", options_from_collection_for_select(@orders, "id", "tracking_number"), class: "form-control" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class: "btn btn-outline-secondary"%>
+  </div>
+<% end %>
