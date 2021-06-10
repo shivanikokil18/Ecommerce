@@ -15,12 +15,12 @@
       <tr>
         <td><%= role.title %></td>
         <td><%= link_to 'Show', role, class: "btn btn-outline-secondary btn-sm" %></td>
-        <% if can? :update, @role%>
+        <%# if can? :update, @role%>
         <td><%= link_to 'Edit', edit_role_path(role), class: "btn btn-outline-secondary btn-sm" %></td>
-        <% end %>
-        <% if can? :destroy, @roles%>
+        <%# end %>
+        <%# if can? :destroy, @roles%>
         <td><%= button_to 'Destroy', role, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-secondary btn-sm" %></td>
-        <% end %>
+        <%# end %>
       </tr>
     <% end %>
   </tbody>
@@ -28,6 +28,6 @@
 
 <br>
 
-<% if can? :create, @roles %>
+<%# if can? :create, @roles %>
 <%= link_to 'New Role', new_role_path, class: "btn btn-outline-secondary" %>
-<% end %>
+<%# end %>

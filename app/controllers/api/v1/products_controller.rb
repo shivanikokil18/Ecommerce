@@ -1,11 +1,11 @@
 class Api::V1::ProductsController < ApiController
   def index
     products = Product.all.as_json(except: [:created_at, :updated_at])
-    render json: { status: 'SUCESS', message: 'Loaded products', data: products }
+    render json: products
   end
 
   def show
-    product = Product.find(params[:id])
+    product = Product.find(params[:id]).as_json(except: [:created_at, :updated_at])
     render json: { status: 'SUCESS', message: 'Loaded required product', data: product }
   end
 
@@ -39,7 +39,7 @@ class Api::V1::ProductsController < ApiController
   
   private
     def product_params
-      params.permit(:name, :deescription, :price, :discount_price, :tax, :final_value, :product_category_id, :status)
+      params.require(:product).permit(:name, :deescription, :price, :discount_price, :tax, :final_value, :product_category_id, :status)
     end
 end
 

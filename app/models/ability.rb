@@ -7,7 +7,6 @@ class Ability
 
     if user.admin?
       can :manage, :all
-      #can :read, Product
     else
       can :read, Product
 
@@ -18,7 +17,7 @@ class Ability
       can :manage, ProductReview, user_id: user.id
       can :read, ProductReview
 
-      can :read, ProductCategory
+      #can :read, ProductCategory
 
       can :manage, UserAddress, user_id: user.id
 
@@ -30,7 +29,7 @@ class Ability
 
       can :read, OrderItem
 
-      can :read, Role
+      #can :read, Role
 
       can :read, Shipment
 
