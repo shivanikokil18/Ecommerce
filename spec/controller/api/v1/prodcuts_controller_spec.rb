@@ -81,35 +81,38 @@ RSpec.describe Api::V1::ProductsController, type: :request do
   
   
   describe "POST #create" do
-    
-    before do
-      product_category = ProductCategory.create(id: 7, name: 'pqr')
-      
-      @product = Product.create(
-        id: 10,
-        name: 'abc',
-        deescription: 'abcd',
-        price: 100,
-        discount_price: 70,
-        tax: 10,
-        final_value: 80,
-        product_category_id: 7,
-        status: 3  
-      )
-      #byebug
+    #byebug
+    let(:product_category_params) do 
+      {
+        product_category:{
+          id: 1,
+          name: 'pqr'
+        }
+      }
     end
-    
+    before do
+      @product_category = ProductCategory.create!(product_category_params[:product_category])
+    end
+    let(:product_params) do
+      {
+        product: {
+          name: 'abcd', deescription: 'nice', price: 100, discount_price: 70, tax: 10, final_value: 80,
+          product_category_id: @product_category.id, status: "available"
+        }
+      }
+    end    
     context 'success' do
       it 'returns 200' do
-        post '/api/v1/products', params: {id: @product.id}
-        expect(response).to have_http_status(:success)
+        post '/api/v1/products', params: product_params
+        expect(response).to have_http_status(200)
       end
     end
 
     context "failure" do
       it 'has missing parameter' do
+        product_params[:product].delete(:product_category_id)
         post '/api/v1/products', params: product_params
-        expect(response).to have_http_status(:error)
+        expect(response).to have_http_status(422)
       end
     end
   end

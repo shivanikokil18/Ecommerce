@@ -12,9 +12,9 @@ class Api::V1::ProductsController < ApiController
   def create
     product = Product.new(product_params)
     if product.save
-      render json: { status: :ok, message: "created sucessfully", data: product }
+      render json: {  message: "created sucessfully", data: product }
     else 
-      render json: { status: 'ERROR', message: "Product not created", data: product.errors}, status: :unprocessable_entity
+      render json: { message: "Product not created"}, status: :unprocessable_entity
     end
   end
 
@@ -23,7 +23,7 @@ class Api::V1::ProductsController < ApiController
     if product.update(product_params)
       render json: { status: :ok, message: "updated sucessfully", data: product }
     else
-      render json: { status: 'ERROR', message: "Product not updated", data: product.errors}, status: :unprocessable_entity
+      render json: { status: 'ERROR', message: "Product not updated", data: product.errors}, status: :error
     end
   end
 
