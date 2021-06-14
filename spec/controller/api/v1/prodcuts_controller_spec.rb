@@ -74,14 +74,13 @@ RSpec.describe Api::V1::ProductsController, type: :request do
       it 'should have equal product id' do
         get "/api/v1/products/#{@product.id}", params: {id: @product.id}
         json_response = JSON.parse(response.body)
-        expect(json_response['data'['id']]).to eq(@product_id)
+        expect(json_response['data']['id']).to eq(@product_id)
       end
     end
   end
   
   
   describe "POST #create" do
-    #byebug
     let(:product_category_params) do 
       {
         product_category:{
@@ -114,6 +113,87 @@ RSpec.describe Api::V1::ProductsController, type: :request do
         post '/api/v1/products', params: product_params
         expect(response).to have_http_status(422)
       end
+    end
+  end
+
+  describe "PATCH #update" do
+    let(:product_category_params) do 
+      {
+        product_category:{
+          id: 2,
+          name: 'cloth'
+        }
+      }
+    end
+    
+    before do 
+      @product_category = ProductCategory.create!(product_category_params[:product_category])
+    end
+
+    let(:product_params) do 
+      {
+        product:{
+          name: 'jacket', deescription: 'denim', price: 1000, discount_price: 700, tax: 10, final_value: 710,
+          product_category_id: @product_category.id, status: "available"
+        }
+      }
+    end
+    before do
+      @product = Product.create(product_params[:product])
+    end
+
+    context "sucess" do
+      it "returns 200" do
+        patch  "/api/v1/products/#{@product.id}", params: product_params
+        json_response = JSON.parse(response.body)
+        json_response['data']['name'] = "shirt"
+        expect(response).to have_http_status(200)
+        expect(json_response['data']['name']).to eq("shirt")
+      end  
+    end
+    
+    context "failure" do
+      it "returns 500" do
+        patch  "/api/v1/products/#{@product.id}", params: product_params
+        json_response = JSON.parse(response.body)
+        json_response['data']['product_category_id'] = " "
+        expect(response).to have_http_status(500)
+      end 
+    end 
+  end
+
+  describe "DELETE #destroy" do
+    let(:product_category_params) do 
+      {
+        product_category:{
+          id: 2,
+          name: 'cloth'
+        }
+      }
+    end
+    
+    before do 
+      @product_category = ProductCategory.create!(product_category_params[:product_category])
+    end
+
+    let(:product_params) do 
+      {
+        product:{
+          id: 1, name: 'jacket', deescription: 'denim', price: 1000, discount_price: 700, tax: 10, final_value: 710,
+          product_category_id: @product_category.id, status: "available"
+        }
+      }
+    end
+    before do
+      @product = Product.create(product_params[:product])
+    end
+
+    context "success" do
+      it "returns 200" do
+        delete "/api/v1/products/#{@product.id}", params: {id: @product.id}
+        expect(response).to have_http_status(200)  
+        expect(Product.find_by(name: @product["jacket"])).to be_nil
+      end      
     end
   end
 end

@@ -23,7 +23,7 @@ class Api::V1::ProductsController < ApiController
     if product.update(product_params)
       render json: { status: :ok, message: "updated sucessfully", data: product }
     else
-      render json: { status: 'ERROR', message: "Product not updated", data: product.errors}, status: :error
+      render json: { message: "Product not updated" }, status: 500
     end
   end
 
@@ -31,9 +31,9 @@ class Api::V1::ProductsController < ApiController
     product = Product.all
     product = Product.find(params[:id])
     if product.destroy
-      render json: { status: :ok, message: "deleted sucessfully", data: product }
+      render json: { message: "deleted sucessfully", data: product },status: :ok
     else
-      render json: { status: 'ERROR', message: "can not delete product", data: product.errors}
+      render json: { message: "can not delete product" }, status: 500
     end
   end
   
@@ -42,5 +42,3 @@ class Api::V1::ProductsController < ApiController
       params.require(:product).permit(:name, :deescription, :price, :discount_price, :tax, :final_value, :product_category_id, :status)
     end
 end
-
-
