@@ -10,9 +10,9 @@ class Ability
     else
       can :read, Product
 
-      can :read, Order, user_id: user.id
-      cannot :distroy, Order
-      cannot :update, Order
+      # can :read, Order, user_id: user.id
+      # cannot :distroy, Order
+      # cannot :update, Order
 
       can :manage, ProductReview, user_id: user.id
       can :read, ProductReview

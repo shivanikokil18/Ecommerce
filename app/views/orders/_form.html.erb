@@ -29,11 +29,10 @@
     <%= select_tag :status, options_for_select(Order.statuses), class: "form-control" %>
   </div> 
 
-<!--  <div class="field">
+  <div class="field">
     <%= form.label :user_id %>
     <%= select_tag "user_id", options_from_collection_for_select(@users, "id", "email"), class: "form-control" %>
   </div>
--->
 
   <div class="field">
     <%= form.label :user_address_id %>

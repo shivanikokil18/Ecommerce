@@ -25,7 +25,7 @@
   <%= @order.user_address.address%>
 </p>
 
-<% if can? :update, @order%>
+<%# if can? :update, @order%>
 <%= link_to 'Edit', edit_order_path(@order), class: "btn btn-outline-secondary" %> 
-<% end %>
+<%# end %>
 <%= link_to 'Back', orders_path, class: "btn btn-outline-dark" %>

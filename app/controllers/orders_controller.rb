@@ -1,13 +1,13 @@
 class OrdersController < ApplicationController
-  load_and_authorize_resource
+  #load_and_authorize_resource
   #before_action :zero_users_or_authenticated, only: [:read]
 
   before_action :set_order, only: %i[ show edit update destroy ]
   
   # GET /orders or /orders.json
   def index
-    #@orders = Order.all
-    @orders = Order.accessible_by(current_ability)
+    @orders = Order.all
+    #@orders = Order.accessible_by(current_ability)
   end
 
   # GET /orders/1 or /orders/1.json
