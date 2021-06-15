@@ -24,6 +24,14 @@ class Api::V1::OrdersController < ApiController
     render json: { message: "deleted sucessfully", data: order },status: :ok
   end
 
+  def update
+    order = Order.find(params[:id])
+    if order.update(order_params)
+      render json: { messaage: "updated successfully", data: order}
+    else 
+      render json: { message: "updation failed"}, status: 500
+    end
+  end
 
   private
     def order_params
