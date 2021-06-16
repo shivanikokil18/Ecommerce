@@ -8,19 +8,9 @@ class User < ApplicationRecord
 
   validates :email, presence: true, :uniqueness => { case_sensitive: false }, format: { with: VALID_EMAIL_REGEX }
   
-
-  #validates :first_name, :last_name, presence: true
-
-  #def full_name
-   # "#{first_name} #{last_name}"
-  #end
-  
   has_many :user_addresses
-
   has_many :orders, :dependent => :destroy
-
   has_many :transactions
-
   has_many :product_reviews
   has_many :carts
 

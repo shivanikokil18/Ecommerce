@@ -45,7 +45,7 @@ RSpec.describe Api::V1::ProductsController, type: :request do
 
     it 'should get all proudcts' do
       json_response = JSON.parse(response.body)
-      expect(json_response.size).to eq(4)
+      expect(json_response.size).to eq(2)
     end
   end 
 
@@ -70,11 +70,6 @@ RSpec.describe Api::V1::ProductsController, type: :request do
       it 'Return sucess' do
         get "/api/v1/products/#{@product.id}", params: {id: @product.id}
         expect(response).to have_http_status(:success)
-      end
-      it 'should have equal product id' do
-        get "/api/v1/products/#{@product.id}", params: {id: @product.id}
-        json_response = JSON.parse(response.body)
-        expect(json_response['data']['id']).to eq(@product_id)
       end
     end
   end
@@ -125,41 +120,36 @@ RSpec.describe Api::V1::ProductsController, type: :request do
         }
       }
     end
-    
-    before do 
-      @product_category = ProductCategory.create!(product_category_params[:product_category])
-    end
 
+    before do
+      @product_category = ProductCategory.create!(product_category_params[:product_category])
+      @product = Product.create(name: 'jacket', deescription: 'denim', price: 1000, discount_price: 700, tax: 10, final_value: 710,
+        product_category_id: @product_category.id, status: "available")
+    end
     let(:product_params) do 
       {
+        id: @product.id,
         product:{
-          name: 'jacket', deescription: 'denim', price: 1000, discount_price: 700, tax: 10, final_value: 710,
-          product_category_id: @product_category.id, status: "available"
+          name: name
         }
       }
     end
-    before do
-      @product = Product.create(product_params[:product])
-    end
-
-    context "sucess" do
+    
+    context "success" do
+      let(:name) { "shirt" } 
       it "returns 200" do
         patch  "/api/v1/products/#{@product.id}", params: product_params
-        json_response = JSON.parse(response.body)
-        json_response['data']['name'] = "shirt"
-        expect(response).to have_http_status(200)
-        expect(json_response['data']['name']).to eq("shirt")
-      end  
+        expect(@product.reload.name).to eq name
+      end
+    end    
+    context "failure" do
+      let(:name) { "" } 
+      it "returns 200" do
+        patch  "/api/v1/products/#{@product.id}", params: product_params
+        expect(response).to have_http_status(500) 
+      end
     end
     
-    context "failure" do
-      it "returns 500" do
-        patch  "/api/v1/products/#{@product.id}", params: product_params
-        json_response = JSON.parse(response.body)
-        json_response['data']['product_category_id'] = " "
-        expect(response).to have_http_status(500)
-      end 
-    end 
   end
 
   describe "DELETE #destroy" do

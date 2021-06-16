@@ -7,4 +7,7 @@ class Order < ApplicationRecord
   has_many :transactions
   
   enum status: [:placed, :not_placed, :not_set]
+
+  validates :status, presence: :true
+  validates :tracking_number, presence: :true
 end

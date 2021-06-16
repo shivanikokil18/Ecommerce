@@ -86,45 +86,36 @@ RSpec.describe  Api::V1::OrdersController, type: :request do
   end
 
   describe "PATCH #update" do
-
-    let(:order_params) do
-      {
-        order: {
-          tracking_number: 123456, 
-          order_placed_date: 13/06/2021, 
-          user_id: @user.id, 
-          user_address_id: @user_address.id, 
-          status: "placed"
-        }
-      }
-    end
-
     before do
       @role = Role.create(id: 1, title: "User")
       @user = User.create(id: 1, email: "abc@gmail.com", password: "123456789", role_id: @role.id)
       @user_address = UserAddress.create(id: 1, address: "home", city: "Pune", pincode: 123456, state: "MH", country: "In", 
       phn_no: 9867542301, residencial_phn_no: 7689234512, user_id: @user.id)
-      @order = Order.create(order_params[:order])
+      @order = Order.create(id:1, tracking_number: 123456, order_placed_date: 13/06/2021, user_id: @user.id, user_address_id: @user_address.id, status: "placed")
     end
 
-    context "sucess" do
-      it "updates sucessfully" do
-        patch "/api/v1/orders/#{@order.id}", params: order_params
-        json_response = JSON.parse(response.body)
-        json_response['data']['tracking_number'] = 98765
-        expect(json_response['data']['tracking_number']).to eq(98765)  
-      end   
+    let(:order_params) do
+      {
+        id: @order.id,
+        order: {
+          tracking_number: tracking_number
+        }
+      }
     end
-    
+    context "sucess" do
+      let(:tracking_number) { 98765 } 
+      it "updates order params" do
+        patch "/api/v1/orders/#{@order.id}", params: order_params
+        expect(@order.reload.tracking_number).to eq tracking_number
+      end
+    end
+
     context "failure" do
+      let(:tracking_number) { "" } 
       it "returns 500" do
         patch "/api/v1/orders/#{@order.id}", params: order_params
-        json_response = JSON.parse(response.body)
-        json_response['data']['user_id'] = null
         expect(response).to have_http_status(500) 
       end
     end
-    
   end
-  
 end
