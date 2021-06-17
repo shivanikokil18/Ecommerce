@@ -4,29 +4,16 @@ require 'spec_helper'
 RSpec.describe Api::V1::ProductsController, type: :request do
   describe "GET #index" do
     before do
-      product_category = ProductCategory.create(id: 1, name: 'pqr')
+      @product_category = ProductCategory.create!(name: 'pqr')
       
-      product = Product.create(
-        id: 1,
+      @product = Product.create!(
         name: 'abc',
         deescription: 'abcd',
         price: 100,
         discount_price: 70,
         tax: 10,
         final_value: 80,
-        product_category_id: 1,
-        status: 3  
-      )
-
-      product = Product.create(
-        id: 2,
-        name: 'abc',
-        deescription: 'abcd',
-        price: 100,
-        discount_price: 70,
-        tax: 10,
-        final_value: 80,
-        product_category_id: 1,
+        product_category_id: @product_category.id,
         status: 3  
       )
       get '/api/v1/products'
@@ -45,24 +32,23 @@ RSpec.describe Api::V1::ProductsController, type: :request do
 
     it 'should get all proudcts' do
       json_response = JSON.parse(response.body)
-      expect(json_response.size).to eq(2)
+      expect(json_response.size).to eq(1)
     end
   end 
 
   describe "#show" do
 
     before do
-      product_category = ProductCategory.create(id: 7, name: 'pqr')
+      @product_category = ProductCategory.create!(name: 'pqr')
       
-      @product = Product.create(
-        id: 10,
+      @product = Product.create!(
         name: 'abc',
         deescription: 'abcd',
         price: 100,
         discount_price: 70,
         tax: 10,
         final_value: 80,
-        product_category_id: 7,
+        product_category_id: @product_category.id,
         status: 3  
       )
     end
@@ -79,7 +65,6 @@ RSpec.describe Api::V1::ProductsController, type: :request do
     let(:product_category_params) do 
       {
         product_category:{
-          id: 1,
           name: 'pqr'
         }
       }
@@ -115,7 +100,6 @@ RSpec.describe Api::V1::ProductsController, type: :request do
     let(:product_category_params) do 
       {
         product_category:{
-          id: 2,
           name: 'cloth'
         }
       }
@@ -123,7 +107,7 @@ RSpec.describe Api::V1::ProductsController, type: :request do
 
     before do
       @product_category = ProductCategory.create!(product_category_params[:product_category])
-      @product = Product.create(name: 'jacket', deescription: 'denim', price: 1000, discount_price: 700, tax: 10, final_value: 710,
+      @product = Product.create!(name: 'jacket', deescription: 'denim', price: 1000, discount_price: 700, tax: 10, final_value: 710,
         product_category_id: @product_category.id, status: "available")
     end
     let(:product_params) do 
@@ -146,7 +130,7 @@ RSpec.describe Api::V1::ProductsController, type: :request do
       let(:name) { "" } 
       it "returns 200" do
         patch  "/api/v1/products/#{@product.id}", params: product_params
-        expect(response).to have_http_status(500) 
+        expect(response).to have_http_status(422) 
       end
     end
     
@@ -156,7 +140,6 @@ RSpec.describe Api::V1::ProductsController, type: :request do
     let(:product_category_params) do 
       {
         product_category:{
-          id: 2,
           name: 'cloth'
         }
       }
@@ -169,13 +152,13 @@ RSpec.describe Api::V1::ProductsController, type: :request do
     let(:product_params) do 
       {
         product:{
-          id: 1, name: 'jacket', deescription: 'denim', price: 1000, discount_price: 700, tax: 10, final_value: 710,
+          name: 'jacket', deescription: 'denim', price: 1000, discount_price: 700, tax: 10, final_value: 710,
           product_category_id: @product_category.id, status: "available"
         }
       }
     end
     before do
-      @product = Product.create(product_params[:product])
+      @product = Product.create!(product_params[:product])
     end
 
     context "success" do
